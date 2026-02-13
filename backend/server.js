@@ -25,15 +25,19 @@ next();
 
 // Routes
 app.get('/', (req, res) => {
-res.json({ message: 'Starter Kit API (ES Modules)', status: 'online' });
+    res.json({ message: 'Starter Kit API (ES Modules)', status: 'online' });
 });
 
 /*
-    POST /api/auth/register
-    POST /api/auth/login
-    GET /api/auth/me
+        POST /api/auth/register
+        POST /api/auth/login
+        GET /api/auth/me
 */
 app.use('/api/auth', authRoutes);
+
+// Routes réservations
+import reservationRoutes from './routes/reservation.routes.js';
+app.use('/api/reservations', reservationRoutes);
 
 // 404
 app.use((req, res) => res.status(404).json({ error: 'Route non trouvée' }));
