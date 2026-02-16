@@ -48,72 +48,102 @@ function Register() {
     }
   };
   return (
-    <div>
-      <h1>Créer un compte</h1>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Prénom</label>
-          <input
-            type="text"
-            name="firstname"
-            value={formData.firstname}
-            onChange={handleChange}
-            required
+    <div className="flex flex-col items-center justify-center min-h-[70vh] px-4">
+      <div className="w-full max-w-md bg-base-200 rounded-xl shadow-lg p-8">
+        <h1 className="text-3xl font-bold mb-6 text-center font-fantasy text-primary">
+          Créer un compte
+        </h1>
+        {error && (
+          <div className="alert alert-error mb-4">
+            <span>{error}</span>
+          </div>
+        )}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Prénom</span>
+            </label>
+            <input
+              type="text"
+              name="firstname"
+              className="input input-bordered w-full"
+              value={formData.firstname}
+              onChange={handleChange}
+              required
+              disabled={loading}
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Nom</span>
+            </label>
+            <input
+              type="text"
+              name="lastname"
+              className="input input-bordered w-full"
+              value={formData.lastname}
+              onChange={handleChange}
+              required
+              disabled={loading}
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Email</span>
+            </label>
+            <input
+              type="email"
+              name="email"
+              className="input input-bordered w-full"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              disabled={loading}
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Mot de passe</span>
+            </label>
+            <input
+              type="password"
+              name="password"
+              className="input input-bordered w-full"
+              value={formData.password}
+              onChange={handleChange}
+              required
+              disabled={loading}
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Confirmer le mot de passe</span>
+            </label>
+            <input
+              type="password"
+              name="confirmPassword"
+              className="input input-bordered w-full"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
+              disabled={loading}
+            />
+          </div>
+          <button
+            type="submit"
+            className="btn btn-primary w-full mt-2"
             disabled={loading}
-          />
-        </div>
-        <div>
-          <label>Nom</label>
-          <input
-            type="text"
-            name="lastname"
-            value={formData.lastname}
-            onChange={handleChange}
-            required
-            disabled={loading}
-          />
-        </div>
-        <div>
-          <label>Email</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            disabled={loading}
-          />
-        </div>
-        <div>
-          <label>Mot de passe</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-            disabled={loading}
-          />
-        </div>
-        <div>
-          <label>Confirmer le mot de passe</label>
-          <input
-            type="password"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            required
-            disabled={loading}
-          />
-        </div>
-        <button type="submit" disabled={loading}>
-          {loading ? "Inscription..." : "S'inscrire"}
-        </button>
-      </form>
-      <p>
-        Déjà un compte ? <Link to="/login">Se connecter</Link>
-      </p>
+          >
+            {loading ? "Inscription..." : "S'inscrire"}
+          </button>
+        </form>
+        <p className="mt-6 text-center">
+          Déjà un compte ?{" "}
+          <Link to="/login" className="link link-accent">
+            Se connecter
+          </Link>
+        </p>
+      </div>
     </div>
   );
 }

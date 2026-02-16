@@ -9,26 +9,80 @@ function Header() {
     logout();
     navigate("/login");
   };
-  
+
   return (
-    <header>
-      <Link className="text-blue-500" to="/">Starter Kit</Link>
-      <nav>
-        <NavLink to="/">Accueil</NavLink>
-        {isAuthenticated && <NavLink to="/dashboard">Dashboard</NavLink>}
-      </nav>
-      <div>
-        {isAuthenticated ? (
-          <>
-            <span>{user?.firstname}</span>
-            <button onClick={handleLogout}>Déconnexion</button>
-          </>
-        ) : (
-          <>
-            <Link to="/login">Connexion</Link>
-            <Link to="/register">S'inscrire</Link>
-          </>
-        )}
+    <header className="navbar bg-base-100 shadow-lg">
+      <div className="flex-1">
+        <Link
+          className="btn btn-ghost text-xl font-fantasy text-primary"
+          to="/"
+        >
+          Starter Kit
+        </Link>
+      </div>
+      <div className="flex-none">
+        <ul className="menu menu-horizontal px-1">
+          <li>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "btn btn-sm btn-primary" : "btn btn-sm btn-ghost"
+              }
+            >
+              Accueil
+            </NavLink>
+          </li>
+          {isAuthenticated && (
+            <li>
+              <NavLink
+                to="/dashboard"
+                className={({ isActive }) =>
+                  isActive ? "btn btn-sm btn-primary" : "btn btn-sm btn-ghost"
+                }
+              >
+                Dashboard
+              </NavLink>
+            </li>
+          )}
+        </ul>
+        <div className="ml-2">
+          {isAuthenticated ? (
+            <div className="dropdown dropdown-end">
+              <label
+                tabIndex={0}
+                className="btn btn-ghost btn-circle avatar placeholder"
+              >
+                <div className="bg-primary text-primary-content rounded-full w-10">
+                  <span className="text-lg">{user?.firstname?.[0]}</span>
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+              >
+                <li className="menu-title">
+                  <span>
+                    {user?.firstname} {user?.lastname}
+                  </span>
+                </li>
+                <li>
+                  <button onClick={handleLogout} className="text-error">
+                    Déconnexion
+                  </button>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <div className="flex gap-2">
+              <Link to="/login" className="btn btn-sm btn-ghost">
+                Connexion
+              </Link>
+              <Link to="/register" className="btn btn-sm btn-primary">
+                S'inscrire
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );
