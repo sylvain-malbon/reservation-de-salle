@@ -21,7 +21,7 @@ function Login() {
       await login(email, password);
       navigate(from, { replace: true });
     } catch (err) {
-      import { ArrowLeftIcon } from "@heroicons/react/24/solid";
+      setError(err.message || "Erreur de connexion");
     } finally {
       setLoading(false);
     }
@@ -43,10 +43,10 @@ function Login() {
           Connexion
         </h1>
         {error && (
-            <Link to="/" className="btn btn-ghost btn-sm mb-4 flex items-center gap-2 w-fit">
-              <ArrowLeftIcon className="h-5 w-5" />
-              Retour
-            </Link>
+          <div className="alert alert-error mb-4">
+            <span>{error}</span>
+          </div>
+        )}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="form-control">
             <label className="label">

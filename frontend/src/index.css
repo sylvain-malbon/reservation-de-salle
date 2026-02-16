@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Amarante&family=MedievalSharp&display=swap');
 @import "tailwindcss";
 
 @plugin "daisyui" {
   themes: dark --default, dark --prefersdark;
+}
+
+@theme {
+  --font-medieval:"MedievalSharp", cursive;
 }

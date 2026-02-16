@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
 // Obtenir une réservation par ID
 router.get('/:id', async (req, res) => {
   try {
-    const reservation = await Reservation.findByPk(req.params.id);
+    const reservation = await Reservation.findById(req.params.id);
     if (!reservation) return res.status(404).json({ error: 'Réservation non trouvée' });
     res.json(reservation);
   } catch (error) {
@@ -37,9 +37,8 @@ router.get('/:id', async (req, res) => {
 // Modifier une réservation
 router.put('/:id', async (req, res) => {
   try {
-    const [updated] = await Reservation.update(req.body, { where: { id: req.params.id } });
-    if (!updated) return res.status(404).json({ error: 'Réservation non trouvée' });
-    const updatedReservation = await Reservation.findByPk(req.params.id);
+    const updatedReservation = await Reservation.update(req.params.id, req.body);
+    if (!updatedReservation) return res.status(404).json({ error: 'Réservation non trouvée' });
     res.json(updatedReservation);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -49,8 +48,7 @@ router.put('/:id', async (req, res) => {
 // Supprimer une réservation
 router.delete('/:id', async (req, res) => {
   try {
-    const deleted = await Reservation.destroy({ where: { id: req.params.id } });
-    if (!deleted) return res.status(404).json({ error: 'Réservation non trouvée' });
+    await Reservation.delete(req.params.id, req.body.user_id);
     res.json({ message: 'Réservation supprimée' });
   } catch (error) {
     res.status(500).json({ error: error.message });
