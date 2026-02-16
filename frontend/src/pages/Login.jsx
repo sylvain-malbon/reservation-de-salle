@@ -21,7 +21,7 @@ function Login() {
       await login(email, password);
       navigate(from, { replace: true });
     } catch (err) {
-      setError(err.message || "Erreur de connexion");
+      import { ArrowLeftIcon } from "@heroicons/react/24/solid";
     } finally {
       setLoading(false);
     }
@@ -30,14 +30,23 @@ function Login() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[70vh] px-4">
       <div className="w-full max-w-md bg-base-200 rounded-xl shadow-lg p-8">
+        <Link
+          to="/"
+          className="btn btn-ghost btn-sm mb-4 flex items-center gap-2 w-fit"
+        >
+          <span className="material-icons" style={{ fontSize: "18px" }}>
+            arrow_back
+          </span>
+          Retour
+        </Link>
         <h1 className="text-3xl font-bold mb-6 text-center font-fantasy text-primary">
           Connexion
         </h1>
         {error && (
-          <div className="alert alert-error mb-4">
-            <span>{error}</span>
-          </div>
-        )}
+            <Link to="/" className="btn btn-ghost btn-sm mb-4 flex items-center gap-2 w-fit">
+              <ArrowLeftIcon className="h-5 w-5" />
+              Retour
+            </Link>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="form-control">
             <label className="label">
