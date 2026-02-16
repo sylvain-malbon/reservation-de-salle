@@ -12,7 +12,7 @@ function Header() {
   
   return (
     <header>
-      <Link to="/">Starter Kit</Link>
+      <Link className="text-blue-500" to="/">Starter Kit</Link>
       <nav>
         <NavLink to="/">Accueil</NavLink>
         {isAuthenticated && <NavLink to="/dashboard">Dashboard</NavLink>}
