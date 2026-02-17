@@ -21,18 +21,8 @@ function Header() {
         </Link>
       </div>
       <div className="flex-none">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive ? "btn btn-sm btn-primary" : "btn btn-sm btn-ghost"
-              }
-            >
-              Accueil
-            </NavLink>
-          </li>
-          {isAuthenticated && (
+        {isAuthenticated && (
+          <ul className="menu menu-horizontal px-1">
             <li>
               <NavLink
                 to="/dashboard"
@@ -43,8 +33,8 @@ function Header() {
                 Tableau de bord
               </NavLink>
             </li>
-          )}
-        </ul>
+          </ul>
+        )}
         <div className="ml-2">
           {isAuthenticated ? (
             <div className="dropdown dropdown-end">

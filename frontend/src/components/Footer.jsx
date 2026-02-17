@@ -5,7 +5,7 @@ function Footer() {
       <aside>
         <p className="font-brand text-lg text-primary">Réservation de Salle</p>
         <p className="text-sm text-base-content/70 font-medium">
-          © {new Date().getFullYear()} La Plateforme_ - Tous droits réservés
+          © {new Date().getFullYear()} TechSpace Solutions - Tous droits réservés
         </p>
       </aside>
       <nav>
