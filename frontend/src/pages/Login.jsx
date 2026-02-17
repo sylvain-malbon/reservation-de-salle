@@ -82,7 +82,7 @@ function Login() {
         <p className="mt-6 text-center">
           Pas de compte ?{" "}
           <Link to="/register" className="link link-accent">
-            S'inscrire
+            Créer un compet
           </Link>
         </p>
       </div>

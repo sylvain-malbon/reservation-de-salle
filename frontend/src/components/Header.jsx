@@ -14,7 +14,7 @@ function Header() {
     <header className="navbar bg-base-100">
       <div className="flex-1">
         <Link
-          className="btn btn-ghost text-xl font-brand text-primary hover:scale-105 transition-transform"
+          className="btn btn-ghost btn-accent text-xl font-brand hover:scale-105 transition-transform"
           to="/"
         >
           Réservation de Salle
@@ -64,11 +64,11 @@ function Header() {
             </div>
           ) : (
             <div className="flex gap-2">
+              <Link to="/register" className="btn btn-sm btn-accent">
+                Créer un compte
+              </Link>
               <Link to="/login" className="btn btn-sm btn-ghost">
                 Se connecter
-              </Link>
-              <Link to="/register" className="btn btn-sm btn-primary">
-                S'inscrire
               </Link>
             </div>
           )}

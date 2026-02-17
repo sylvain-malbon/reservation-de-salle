@@ -142,7 +142,7 @@ function Register() {
             className="btn btn-primary w-full mt-2"
             disabled={loading}
           >
-            {loading ? "Inscription..." : "S'inscrire"}
+            {loading ? "Inscription..." : "Créer un compte"}
           </button>
         </form>
         <p className="mt-6 text-center">
