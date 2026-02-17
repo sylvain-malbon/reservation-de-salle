@@ -30,7 +30,7 @@ function Header() {
                   isActive ? "btn btn-sm btn-primary" : "btn btn-sm btn-ghost"
                 }
               >
-                Tableau de bord
+                Tableau des Réservations
               </NavLink>
             </li>
           </ul>

@@ -17,7 +17,7 @@ function Home() {
           <div className="flex gap-4 justify-center flex-wrap">
             {isAuthenticated ? (
               <Link to="/dashboard" className="btn btn-primary btn-lg">
-                Accéder au Tableau de bord
+                Accéder au Tableau des Réservations
               </Link>
             ) : (
               <>
