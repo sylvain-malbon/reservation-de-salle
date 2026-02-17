@@ -1,12 +1,22 @@
 
 import express from 'express';
 import Reservation from '../models/reservation.model.js';
+import authMiddleware from '../middlewares/auth.middleware.js';
 const router = express.Router();
 
 // Créer une réservation
-router.post('/', async (req, res) => {
+router.post('/', authMiddleware, async (req, res) => {
   try {
-    const reservation = await Reservation.create(req.body);
+    // On récupère l'ID utilisateur depuis le middleware d'authentification
+    const user_id = req.user?.id;
+    if (!user_id) {
+      return res.status(401).json({ error: "Utilisateur non authentifié" });
+    }
+    const { title, start_date, end_date } = req.body;
+    if (!title || !start_date || !end_date) {
+      return res.status(400).json({ error: "Champs manquants" });
+    }
+    const reservation = await Reservation.create({ title, start_date, end_date, user_id });
     res.status(201).json(reservation);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -14,7 +24,7 @@ router.post('/', async (req, res) => {
 });
 
 // Obtenir toutes les réservations
-router.get('/', async (req, res) => {
+router.get('/', authMiddleware, async (req, res) => {
   try {
     const reservations = await Reservation.findAll();
     res.json(reservations);
@@ -24,7 +34,7 @@ router.get('/', async (req, res) => {
 });
 
 // Obtenir une réservation par ID
-router.get('/:id', async (req, res) => {
+router.get('/:id', authMiddleware, async (req, res) => {
   try {
     const reservation = await Reservation.findById(req.params.id);
     if (!reservation) return res.status(404).json({ error: 'Réservation non trouvée' });
@@ -35,7 +45,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Modifier une réservation
-router.put('/:id', async (req, res) => {
+router.put('/:id', authMiddleware, async (req, res) => {
   try {
     const updatedReservation = await Reservation.update(req.params.id, req.body);
     if (!updatedReservation) return res.status(404).json({ error: 'Réservation non trouvée' });
@@ -46,7 +56,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // Supprimer une réservation
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', authMiddleware, async (req, res) => {
   try {
     await Reservation.delete(req.params.id, req.body.user_id);
     res.json({ message: 'Réservation supprimée' });

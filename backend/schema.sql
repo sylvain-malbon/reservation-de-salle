@@ -1,8 +1,8 @@
 -- schema.sql
-CREATE DATABASE IF NOT EXISTS starter_kit
+CREATE DATABASE IF NOT EXISTS reservation_de_salle
 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-USE starter_kit;
+USE reservation_de_salle;
 
 CREATE TABLE IF NOT EXISTS users (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -17,3 +17,14 @@ CREATE TABLE IF NOT EXISTS users (
 ) ENGINE=InnoDB;
 
 -- TODO: Ajouter vos tables ici (rooms, reservations...)
+
+CREATE TABLE IF NOT EXISTS reservations (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  start_date DATETIME NOT NULL,
+  end_date DATETIME NOT NULL,
+  user_id INT UNSIGNED NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB;

@@ -36,3 +36,35 @@ export const authService = {
     }),
   getProfile: () => fetchAPI("/auth/me"),
 };
+
+export const reservationService = {
+  // Récupérer toutes les réservations
+  getAll: () => fetchAPI("/reservations"),
+
+  // Récupérer les réservations d'une semaine spécifique
+  getByWeek: (startDate, endDate) =>
+    fetchAPI(`/reservations?start=${startDate}&end=${endDate}`),
+
+  // Créer une nouvelle réservation
+  create: (reservationData) =>
+    fetchAPI("/reservations", {
+      method: "POST",
+      body: JSON.stringify(reservationData),
+    }),
+
+  // Modifier une réservation
+  update: (id, reservationData) =>
+    fetchAPI(`/reservations/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(reservationData),
+    }),
+
+  // Supprimer une réservation
+  delete: (id) =>
+    fetchAPI(`/reservations/${id}`, {
+      method: "DELETE",
+    }),
+
+  // Récupérer les réservations de l'utilisateur connecté
+  getMyReservations: () => fetchAPI("/reservations/my"),
+};

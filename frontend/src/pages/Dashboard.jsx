@@ -1,11 +1,13 @@
 import { useAuth } from "../hooks/useAuth.js";
+import Planning from "../components/Planning.jsx";
 
 function Dashboard() {
   const { user } = useAuth();
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-7xl mx-auto space-y-8">
+        {/* Carte de bienvenue */}
         <div className="card bg-base-100 shadow-xl">
           <div className="card-body">
             <h1 className="text-4xl font-brand text-primary mb-4">
@@ -24,10 +26,13 @@ function Dashboard() {
                 </p>
               </div>
             </div>
-            <div className="card-actions justify-end mt-6">
-              <button className="btn btn-primary">Gérer mon profil</button>
-              <button className="btn btn-accent">Mes réservations</button>
-            </div>
+          </div>
+        </div>
+
+        {/* Planning des réservations */}
+        <div className="card bg-base-100 shadow-xl">
+          <div className="card-body">
+            <Planning />
           </div>
         </div>
       </div>
