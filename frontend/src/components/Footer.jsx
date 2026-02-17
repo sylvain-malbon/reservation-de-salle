@@ -4,7 +4,7 @@ function Footer() {
     <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded mt-10">
       <aside>
         <p className="font-bold text-lg font-fantasy text-primary">
-          Starter Kit
+          Réservation de Salle
         </p>
         <p className="text-base-content/60">
           © {new Date().getFullYear()} La Plateforme_ - Tous droits réservés

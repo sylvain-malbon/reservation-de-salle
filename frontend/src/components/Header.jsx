@@ -11,13 +11,13 @@ function Header() {
   };
 
   return (
-    <header className="navbar bg-base-100 shadow-lg">
+    <header className="navbar bg-base-100">
       <div className="flex-1">
         <Link
           className="btn btn-ghost text-xl font-fantasy text-primary"
           to="/"
         >
-          Starter Kit
+          Réservation de Salle
         </Link>
       </div>
       <div className="flex-none">
@@ -40,7 +40,7 @@ function Header() {
                   isActive ? "btn btn-sm btn-primary" : "btn btn-sm btn-ghost"
                 }
               >
-                Dashboard
+                Tableau de bord
               </NavLink>
             </li>
           )}
@@ -52,13 +52,13 @@ function Header() {
                 tabIndex={0}
                 className="btn btn-ghost btn-circle avatar placeholder"
               >
-                <div className="bg-primary text-primary-content rounded-full w-10">
+                <div className="bg-primary text-primary-content rounded-full w-10 flex items-center justify-center">
                   <span className="text-lg">{user?.firstname?.[0]}</span>
                 </div>
               </label>
               <ul
                 tabIndex={0}
-                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+                className="mt-3 z-[1] p-2 menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
               >
                 <li className="menu-title">
                   <span>

@@ -6,7 +6,7 @@ function Dashboard() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
-        <div className="card bg-base-100 shadow-xl">
+        <div className="card bg-base-100">
           <div className="card-body">
             <h1 className="card-title text-3xl font-bold text-primary font-fantasy mb-4">
               Bienvenue {user?.firstname} !

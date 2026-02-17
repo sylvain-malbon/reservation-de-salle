@@ -29,7 +29,7 @@ function Login() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[70vh] px-4">
-      <div className="w-full max-w-md bg-base-200 rounded-xl shadow-lg p-8">
+      <div className="w-full max-w-md bg-base-200 rounded-xl p-8">
         <Link
           to="/"
           className="btn btn-ghost btn-sm mb-4 flex items-center gap-2 w-fit"

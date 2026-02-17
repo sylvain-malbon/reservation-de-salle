@@ -25,7 +25,7 @@ next();
 
 // Routes
 app.get('/', (req, res) => {
-    res.json({ message: 'Starter Kit API (ES Modules)', status: 'online' });
+    res.json({ message: 'Réservation de Salle API (ES Modules)', status: 'online' });
 });
 
 /*
