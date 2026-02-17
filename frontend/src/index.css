@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Amarante&family=MedievalSharp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=MedievalSharp&display=swap');
 @import "tailwindcss";
 
 @plugin "daisyui" {
@@ -6,5 +6,50 @@
 }
 
 @theme {
-  --font-medieval:"MedievalSharp", cursive;
+  /* Police principale moderne */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  /* Police médiévale pour branding uniquement */
+  --font-medieval: "MedievalSharp", cursive;
+  
+  /* Poids de police personnalisés */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+}
+
+/* Police par défaut pour tout le site */
+body {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400;
+}
+
+/* Classe utilitaire pour le branding médiéval */
+.font-brand {
+  font-family: var(--font-medieval);
+  letter-spacing: 0.02em;
+}
+
+/* Styles typographiques modernes */
+.heading-display {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.heading-primary {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.text-body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.6;
 }

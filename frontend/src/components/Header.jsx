@@ -14,7 +14,7 @@ function Header() {
     <header className="navbar bg-base-100">
       <div className="flex-1">
         <Link
-          className="btn btn-ghost text-xl font-fantasy text-primary"
+          className="btn btn-ghost text-xl font-brand text-primary hover:scale-105 transition-transform"
           to="/"
         >
           Réservation de Salle

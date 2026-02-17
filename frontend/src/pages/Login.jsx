@@ -30,15 +30,15 @@ function Login() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[70vh] px-4">
-      <div className="w-full max-w-md bg-base-200 rounded-xl p-8">
+      <div className="w-full max-w-md bg-base-200 rounded-xl p-8 shadow-xl">
         <Link
           to="/"
-          className="btn btn-ghost btn-sm mb-4 flex items-center gap-2 w-fit"
+          className="btn btn-ghost btn-sm mb-4 flex items-center gap-2 w-fit font-medium"
         >
           <ArrowLeftIcon className="h-5 w-5" />
           Retour
         </Link>
-        <h1 className="text-3xl font-bold mb-6 text-center font-fantasy text-primary">
+        <h1 className="text-4xl font-brand mb-6 text-center text-primary">
           Connexion
         </h1>
         {error && (
