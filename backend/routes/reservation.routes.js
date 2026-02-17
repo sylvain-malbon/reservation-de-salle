@@ -17,6 +17,7 @@ router.post('/', authMiddleware, async (req, res) => {
       return res.status(400).json({ error: "Champs manquants" });
     }
     const reservation = await Reservation.create({ title, start_date, end_date, user_id });
+    console.log('Nouvelle réservation créée :', reservation);
     res.status(201).json(reservation);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -26,8 +27,32 @@ router.post('/', authMiddleware, async (req, res) => {
 // Obtenir toutes les réservations
 router.get('/', authMiddleware, async (req, res) => {
   try {
-    const reservations = await Reservation.findAll();
-    res.json(reservations);
+    const { start, end } = req.query;
+    console.log('GET /reservations - Paramètres:', { start, end });
+    let reservations;
+    if (start && end) {
+      reservations = await Reservation.findBetweenDates(start, end);
+    } else {
+      reservations = await Reservation.findAll();
+    }
+    // Adapter les champs pour le frontend
+    const mapped = reservations.map(r => {
+      const startDateStr = r.start_date instanceof Date 
+        ? r.start_date.toISOString() 
+        : String(r.start_date);
+      const endDateStr = r.end_date instanceof Date 
+        ? r.end_date.toISOString() 
+        : String(r.end_date);
+      
+      return {
+        ...r,
+        date: startDateStr.split('T')[0],
+        startTime: startDateStr,
+        endTime: endDateStr,
+      };
+    });
+    console.log(`Réservations trouvées: ${mapped.length}`, mapped);
+    res.json(mapped);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

@@ -38,6 +38,7 @@ function Planning() {
         format(monday, "yyyy-MM-dd"),
         format(friday, "yyyy-MM-dd"),
       );
+      console.log("Réservations reçues du backend:", data);
       setReservations(data);
     } catch (error) {
       console.error("Erreur lors du chargement des réservations", error);
@@ -48,11 +49,24 @@ function Planning() {
 
   // Vérifier si un créneau est réservé
   const isSlotReserved = (day, hour) => {
-    return reservations.find(
-      (res) =>
-        new Date(res.date).toDateString() === day.toDateString() &&
-        new Date(res.startTime).getHours() === hour,
-    );
+    const found = reservations.find((res) => {
+      const resDate = new Date(res.date).toDateString();
+      const dayDate = day.toDateString();
+      const resHour = new Date(res.startTime).getHours();
+      const match = resDate === dayDate && resHour === hour;
+      if (match) {
+        console.log("Créneau trouvé:", {
+          res,
+          day,
+          hour,
+          resDate,
+          dayDate,
+          resHour,
+        });
+      }
+      return match;
+    });
+    return found;
   };
 
   // Vérifier si un créneau est dans le passé
