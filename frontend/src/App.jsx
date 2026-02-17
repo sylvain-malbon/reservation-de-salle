@@ -4,7 +4,7 @@ import AuthLayout from "./layouts/AuthLayout.jsx";
 import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
-import Dashboard from "./pages/Dashboard.jsx";
+import BookingSchedule from "./pages/BookingSchedule.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 
@@ -16,10 +16,10 @@ function App() {
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
             <Route
-              path="/dashboard"
+              path="/booking-schedule"
               element={
                 <PrivateRoute>
-                  <Dashboard />
+                  <BookingSchedule />
                 </PrivateRoute>
               }
             />

@@ -12,7 +12,7 @@ function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/dashboard";
+  const from = location.state?.from?.pathname || "/booking-schedule";
 
   const handleSubmit = async (e) => {
     e.preventDefault();

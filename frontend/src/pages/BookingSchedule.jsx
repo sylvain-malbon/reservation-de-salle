@@ -1,7 +1,7 @@
 import { useAuth } from "../hooks/useAuth.js";
 import Planning from "../components/Planning.jsx";
 
-function Dashboard() {
+function BookingSchedule() {
   const { user } = useAuth();
 
   return (
@@ -39,4 +39,4 @@ function Dashboard() {
     </div>
   );
 }
-export default Dashboard;
+export default BookingSchedule;

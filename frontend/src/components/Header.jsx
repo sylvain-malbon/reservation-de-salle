@@ -25,7 +25,7 @@ function Header() {
           <ul className="menu menu-horizontal px-1">
             <li>
               <NavLink
-                to="/dashboard"
+                to="/booking-schedule"
                 className={({ isActive }) =>
                   isActive ? "btn btn-sm btn-primary" : "btn btn-sm btn-ghost"
                 }

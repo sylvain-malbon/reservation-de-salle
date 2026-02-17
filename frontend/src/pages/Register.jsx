@@ -41,7 +41,7 @@ function Register() {
         email: formData.email,
         password: formData.password,
       });
-      navigate("/dashboard");
+      navigate("/booking-schedule");
     } catch (err) {
       setError(err.message || "Erreur lors de l'inscription");
     } finally {
