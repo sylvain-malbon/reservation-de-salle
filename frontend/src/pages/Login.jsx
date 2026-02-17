@@ -1,6 +1,7 @@
 // pages/Login.jsx
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import { useAuth } from "../hooks/useAuth.js";
 
 function Login() {
@@ -34,9 +35,7 @@ function Login() {
           to="/"
           className="btn btn-ghost btn-sm mb-4 flex items-center gap-2 w-fit"
         >
-          <span className="material-icons" style={{ fontSize: "18px" }}>
-            arrow_back
-          </span>
+          <ArrowLeftIcon className="h-5 w-5" />
           Retour
         </Link>
         <h1 className="text-3xl font-bold mb-6 text-center font-fantasy text-primary">

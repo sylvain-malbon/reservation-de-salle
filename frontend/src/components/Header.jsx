@@ -67,7 +67,7 @@ function Header() {
                 </li>
                 <li>
                   <button onClick={handleLogout} className="text-error">
-                    Déconnexion
+                    Se déconnecter
                   </button>
                 </li>
               </ul>
@@ -75,7 +75,7 @@ function Header() {
           ) : (
             <div className="flex gap-2">
               <Link to="/login" className="btn btn-sm btn-ghost">
-                Connexion
+                Se connecter
               </Link>
               <Link to="/register" className="btn btn-sm btn-primary">
                 S'inscrire

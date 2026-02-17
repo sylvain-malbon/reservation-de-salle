@@ -9,10 +9,10 @@ function Home() {
       <div className="hero-content text-center">
         <div className="max-w-2xl">
           <h1 className="text-5xl font-bold mb-6 font-fantasy text-primary drop-shadow-lg">
-            Bienvenue dans la Réservation de Salle
+            Vous pouvez <br></br>Réserver une Salle.
           </h1>
           <p className="text-lg mb-8 text-base-content/80">
-            Intranet TechSpace Solutions
+            Bienvenue dans l'Intranet de TechSpace Solutions.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             {isAuthenticated ? (
@@ -22,7 +22,7 @@ function Home() {
             ) : (
               <>
                 <Link to="/register" className="btn btn-accent btn-lg">
-                  Commencer
+                  S'inscrire
                 </Link>
                 <Link to="/login" className="btn btn-primary btn-lg">
                   Se connecter
