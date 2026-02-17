@@ -11,7 +11,7 @@ function ReservationModal({ slot, onClose, onSuccess }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const isOwnReservation = slot?.reservation?.userId === user?.id;
+  const isOwnReservation = slot?.reservation?.user_id === user?.id;
   const canModify = isOwnReservation;
 
   const handleSubmit = async (e) => {

@@ -72,8 +72,19 @@ router.get('/:id', authMiddleware, async (req, res) => {
 // Modifier une réservation
 router.put('/:id', authMiddleware, async (req, res) => {
   try {
+    const user_id = req.user?.id;
+    if (!user_id) {
+      return res.status(401).json({ error: "Utilisateur non authentifié" });
+    }
+    // Vérifier que la réservation appartient à l'utilisateur
+    const existingReservation = await Reservation.findById(req.params.id);
+    if (!existingReservation) {
+      return res.status(404).json({ error: 'Réservation non trouvée' });
+    }
+    if (existingReservation.user_id !== user_id) {
+      return res.status(403).json({ error: 'Non autorisé à modifier cette réservation' });
+    }
     const updatedReservation = await Reservation.update(req.params.id, req.body);
-    if (!updatedReservation) return res.status(404).json({ error: 'Réservation non trouvée' });
     res.json(updatedReservation);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -83,7 +94,11 @@ router.put('/:id', authMiddleware, async (req, res) => {
 // Supprimer une réservation
 router.delete('/:id', authMiddleware, async (req, res) => {
   try {
-    await Reservation.delete(req.params.id, req.body.user_id);
+    const user_id = req.user?.id;
+    if (!user_id) {
+      return res.status(401).json({ error: "Utilisateur non authentifié" });
+    }
+    await Reservation.delete(req.params.id, user_id);
     res.json({ message: 'Réservation supprimée' });
   } catch (error) {
     res.status(500).json({ error: error.message });
