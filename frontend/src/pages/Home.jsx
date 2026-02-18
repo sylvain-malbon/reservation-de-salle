@@ -48,7 +48,7 @@ function Home() {
           <div className="flex gap-4 justify-center flex-wrap">
             {isAuthenticated ? (
               <Link to="/booking-schedule" className="btn btn-primary btn-lg">
-                Voir le planning
+                Voir le Tableau des Réservations
               </Link>
             ) : (
               <>

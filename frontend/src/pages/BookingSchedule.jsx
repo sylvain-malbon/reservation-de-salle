@@ -13,19 +13,7 @@ function BookingSchedule() {
             <h1 className="text-4xl font-brand text-primary mb-4">
               Bienvenue {user?.firstname} !
             </h1>
-            <div className="divider"></div>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="badge badge-primary badge-lg">Email</div>
-                <p className="text-base-content">{user?.email}</p>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="badge badge-secondary badge-lg">Nom</div>
-                <p className="text-base-content">
-                  {user?.firstname} {user?.lastname}
-                </p>
-              </div>
-            </div>
+            {/* Email et nom supprimés pour alléger la carte de bienvenue */}
           </div>
         </div>
 
