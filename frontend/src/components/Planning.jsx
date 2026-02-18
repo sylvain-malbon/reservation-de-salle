@@ -114,14 +114,17 @@ function Planning() {
         </div>
       ) : (
         <div className="overflow-x-auto">
-          <table className="table table-zebra table-sm">
+          <table
+            className="table table-zebra table-sm border border-base-300"
+            style={{ borderCollapse: "collapse" }}
+          >
             <thead>
               <tr>
-                <th className="bg-base-200">Heure</th>
+                <th className="bg-base-200 border border-base-300">Heure</th>
                 {weekDays.map((day) => (
                   <th
                     key={day.toISOString()}
-                    className="text-center bg-base-200"
+                    className="text-center bg-base-200 border border-base-300"
                   >
                     <div className="font-bold">
                       {format(day, "EEEE", { locale: fr })}
@@ -136,7 +139,7 @@ function Planning() {
             <tbody>
               {hours.map((hour) => (
                 <tr key={hour}>
-                  <td className="font-semibold bg-base-200">
+                  <td className="font-semibold bg-base-200 border border-base-300">
                     {hour}:00 - {hour + 1}:00
                   </td>
                   {weekDays.map((day) => {
@@ -159,7 +162,7 @@ function Planning() {
                         <td
                           key={`${day.toISOString()}-${hour}`}
                           rowSpan={rowSpan}
-                          className="text-center cursor-pointer bg-error-pastel text-error-content hover:brightness-110 transition-all align-middle"
+                          className="text-center cursor-pointer bg-error-pastel text-error-content hover:brightness-110 transition-all align-middle border border-base-300"
                           onClick={() => handleSlotClick(day, hour)}
                         >
                           <div className="p-2">
@@ -181,7 +184,7 @@ function Planning() {
                     return (
                       <td
                         key={`${day.toISOString()}-${hour}`}
-                        className={`text-center cursor-pointer hover:brightness-110 transition-all ${
+                        className={`text-center cursor-pointer hover:brightness-110 transition-all border border-base-300 ${
                           isPast
                             ? "bg-base-300 cursor-not-allowed"
                             : "bg-error-success text-success-content hover:scale-105"
