@@ -53,3 +53,10 @@ body {
   font-weight: 400;
   line-height: 1.6;
 }
+/* Couleurs personnalisées pour les états */
+.bg-error-pastel {
+  background-color: #ffb3b3;
+}
+.bg-error-success {
+  background-color: #8ee88e;
+}

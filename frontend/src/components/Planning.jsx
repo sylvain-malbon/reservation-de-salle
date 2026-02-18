@@ -98,11 +98,11 @@ function Planning() {
         </h2>
         <div className="flex gap-4 text-sm">
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 bg-success rounded"></div>
+            <div className="w-4 h-4 bg-error-success rounded"></div>
             <span>Disponible</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 bg-error rounded"></div>
+            <div className="w-4 h-4 bg-error-pastel rounded"></div>
             <span>Occupé</span>
           </div>
           <div className="flex items-center gap-2">
@@ -154,8 +154,8 @@ function Planning() {
                           isPast
                             ? "bg-base-300 cursor-not-allowed"
                             : reservation
-                              ? "bg-error text-error-content"
-                              : "bg-success text-success-content hover:scale-105"
+                              ? "bg-error-pastel text-error-content"
+                              : "bg-error-success text-success-content hover:scale-105"
                         }`}
                         onClick={() => handleSlotClick(day, hour)}
                       >
