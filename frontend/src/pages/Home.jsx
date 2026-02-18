@@ -13,25 +13,38 @@ function Home() {
   return (
     <div className="hero min-h-[70vh] bg-base-200">
       <div className="hero-content text-center">
-        <div className="max-w-2xl">
-          <h1 className="text-4xl md:text-5xl font-brand mb-6 text-primary drop-shadow-lg leading-tight">
+        <div className="max-w-2xl flex flex-col items-center gap-8">
+
+          {/* Titre */}
+          <h1 className="text-4xl md:text-5xl font-brand text-primary drop-shadow-lg leading-tight">
             Bienvenue dans l'Intranet
             <br />
             de TechSpace Solutions
           </h1>
 
-          <p className="text-lg md:text-xl mb-4 text-base-content/80 font-medium">
+          {/* Accroche */}
+          <p className="text-lg md:text-xl text-base-content/80 font-medium max-w-lg leading-relaxed">
             Réservez la salle de réunion simplement et évitez les conflits de
             planning entre équipes.
           </p>
 
-          <p className="text-sm mb-8 text-base-content/60 font-medium flex flex-wrap justify-center items-center gap-3">
-            <span className="flex items-center gap-1"><CalendarDaysIcon className="w-5 h-5" /> Lundi–Vendredi</span>
-            <span className="flex items-center gap-1"><ClockIcon className="w-5 h-5" /> 8h00–19h00</span>
-            <span className="flex items-center gap-1"><ClockIconSolid className="w-5 h-5" /> Minimum 1h</span>
-            <span className="flex items-center gap-1"><UsersIcon className="w-5 h-5" /> 12 personnes max</span>
-          </p>
+          {/* Infos pratiques */}
+          <div className="flex flex-wrap justify-center gap-3 text-sm font-medium">
+            <span className="flex items-center gap-1.5 bg-base-300 text-base-content/70 px-3 py-1.5 rounded-full">
+              <CalendarDaysIcon className="w-4 h-4 shrink-0" /> Lundi–Vendredi
+            </span>
+            <span className="flex items-center gap-1.5 bg-base-300 text-base-content/70 px-3 py-1.5 rounded-full">
+              <ClockIcon className="w-4 h-4 shrink-0" /> 8h00–19h00
+            </span>
+            <span className="flex items-center gap-1.5 bg-base-300 text-base-content/70 px-3 py-1.5 rounded-full">
+              <ClockIconSolid className="w-4 h-4 shrink-0" /> Minimum 1h
+            </span>
+            <span className="flex items-center gap-1.5 bg-base-300 text-base-content/70 px-3 py-1.5 rounded-full">
+              <UsersIcon className="w-4 h-4 shrink-0" /> 12 personnes max
+            </span>
+          </div>
 
+          {/* CTA */}
           <div className="flex gap-4 justify-center flex-wrap">
             {isAuthenticated ? (
               <Link to="/booking-schedule" className="btn btn-primary btn-lg">
@@ -49,8 +62,9 @@ function Home() {
             )}
           </div>
 
+          {/* Note */}
           {!isAuthenticated && (
-            <p className="mt-6 text-sm text-base-content/60 font-medium">
+            <p className="text-sm text-base-content/40 italic">
               Un compte est nécessaire pour effectuer une réservation.
             </p>
           )}
