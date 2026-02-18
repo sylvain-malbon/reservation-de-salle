@@ -47,26 +47,18 @@ function Planning() {
     }
   };
 
-  // Vérifier si un créneau est réservé
+  // Vérifier si un créneau est réservé (couvre les réservations multi-heures)
   const isSlotReserved = (day, hour) => {
-    const found = reservations.find((res) => {
-      const resDate = new Date(res.date).toDateString();
+    return reservations.find((res) => {
+      const startDate = new Date(res.start_date);
+      const endDate = new Date(res.end_date);
+      const resDay = startDate.toDateString();
       const dayDate = day.toDateString();
-      const resHour = new Date(res.startTime).getHours();
-      const match = resDate === dayDate && resHour === hour;
-      if (match) {
-        console.log("Créneau trouvé:", {
-          res,
-          day,
-          hour,
-          resDate,
-          dayDate,
-          resHour,
-        });
-      }
-      return match;
+      const startHour = startDate.getHours();
+      const endHour = endDate.getHours();
+      // Le créneau est couvert si hour >= startHour ET hour < endHour
+      return resDay === dayDate && hour >= startHour && hour < endHour;
     });
-    return found;
   };
 
   // Vérifier si un créneau est dans le passé
@@ -81,10 +73,14 @@ function Planning() {
     if (isSlotPast(day, hour)) return;
 
     const reservation = isSlotReserved(day, hour);
+    // Si réservation multi-heures, utiliser son heure de début réelle
+    const startHour = reservation
+      ? new Date(reservation.start_date).getHours()
+      : hour;
 
     setSelectedSlot({
       day,
-      hour,
+      hour: startHour,
       reservation: reservation || null,
     });
     setIsModalOpen(true);
