@@ -54,9 +54,9 @@ function Header() {
                     {user?.firstname?.[0]}
                   </span>
                 </div>
-                <span className="font-medium text-base-content/80">
+                <Link to="/profile" className="font-medium text-base-content/80 hover:underline focus:underline outline-none">
                   {user?.firstname} {user?.lastname}
-                </span>
+                </Link>
               </div>
               <button
                 onClick={handleLogout}
