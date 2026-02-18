@@ -115,9 +115,15 @@ function Planning() {
       ) : (
         <div className="overflow-x-auto">
           <table
-            className="table table-zebra table-sm border border-base-300"
+            className="table table-zebra table-sm border border-base-300 w-full table-fixed"
             style={{ borderCollapse: "collapse" }}
           >
+            <colgroup>
+              <col style={{ width: "110px" }} />
+              {weekDays.map((day) => (
+                <col key={day.toISOString()} style={{ width: "150px" }} />
+              ))}
+            </colgroup>
             <thead>
               <tr>
                 <th className="bg-base-200 border border-base-300">Heure</th>
