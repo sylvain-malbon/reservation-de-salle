@@ -143,19 +143,25 @@ function Planning() {
                     const reservation = isSlotReserved(day, hour);
                     const isPast = isSlotPast(day, hour);
 
-                    return (
-                      <td
-                        key={`${day.toISOString()}-${hour}`}
-                        className={`text-center cursor-pointer hover:brightness-110 transition-all ${
-                          isPast
-                            ? "bg-base-300 cursor-not-allowed"
-                            : reservation
-                              ? "bg-error-pastel text-error-content"
-                              : "bg-error-success text-success-content hover:scale-105"
-                        }`}
-                        onClick={() => handleSlotClick(day, hour)}
-                      >
-                        {reservation ? (
+                    if (reservation) {
+                      const startHour = new Date(
+                        reservation.start_date,
+                      ).getHours();
+                      const endHour = new Date(reservation.end_date).getHours();
+
+                      // Créneau intermédiaire : ne pas rendre la cellule (fusionnée)
+                      if (hour !== startHour) return null;
+
+                      // Créneau de début : rowSpan = durée en heures
+                      const rowSpan = endHour - startHour;
+
+                      return (
+                        <td
+                          key={`${day.toISOString()}-${hour}`}
+                          rowSpan={rowSpan}
+                          className="text-center cursor-pointer bg-error-pastel text-error-content hover:brightness-110 transition-all align-middle"
+                          onClick={() => handleSlotClick(day, hour)}
+                        >
                           <div className="p-2">
                             <div className="font-semibold text-sm truncate">
                               {reservation.title}
@@ -164,8 +170,25 @@ function Planning() {
                               {reservation.user?.firstname}{" "}
                               {reservation.user?.lastname}
                             </div>
+                            <div className="text-xs opacity-60 mt-1">
+                              {startHour}:00 – {endHour}:00
+                            </div>
                           </div>
-                        ) : isPast ? (
+                        </td>
+                      );
+                    }
+
+                    return (
+                      <td
+                        key={`${day.toISOString()}-${hour}`}
+                        className={`text-center cursor-pointer hover:brightness-110 transition-all ${
+                          isPast
+                            ? "bg-base-300 cursor-not-allowed"
+                            : "bg-error-success text-success-content hover:scale-105"
+                        }`}
+                        onClick={() => handleSlotClick(day, hour)}
+                      >
+                        {isPast ? (
                           <span className="opacity-50">-</span>
                         ) : (
                           <span className="text-lg">+</span>
