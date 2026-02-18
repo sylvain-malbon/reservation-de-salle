@@ -1,3 +1,6 @@
+.bg-error-pastel:hover {
+  background-color: #fe9898;
+}
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=MedievalSharp&display=swap');
 @import "tailwindcss";
 
@@ -55,8 +58,8 @@ body {
 }
 /* Couleurs personnalisées pour les états */
 .bg-error-pastel {
-  background-color: #ffb3b3;
+  background-color: #ff6f6f;
 }
 .bg-error-success {
-  background-color: #8ee88e;
+  background-color: #6eea9c;
 }
