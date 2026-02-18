@@ -37,7 +37,7 @@ function Header() {
                   isActive ? "btn btn-sm btn-primary" : "btn btn-sm btn-ghost"
                 }
               >
-                Tableau des Réservations
+                Planning de la Semaine
               </NavLink>
             ))}
           {isAuthenticated ? (

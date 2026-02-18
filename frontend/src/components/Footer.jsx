@@ -24,7 +24,7 @@ function Footer() {
                   : "text-xs text-base-content/50 font-medium hover:text-base-content transition-colors"
               }
             >
-              Tableau des réservations
+              planning de la semaine
             </NavLink>
           )}
           {isAuthenticated ? (
@@ -32,21 +32,28 @@ function Footer() {
               onClick={handleLogout}
               className="text-xs text-error font-medium hover:underline transition-colors bg-transparent border-none cursor-pointer"
             >
-              Se déconnecter
+              se déconnecter
             </button>
           ) : (
             <>
-              <Link to="/register" className="text-xs text-accent font-medium hover:underline transition-colors">
-                Créer un compte
+              <Link
+                to="/register"
+                className="text-xs text-accent font-medium hover:underline transition-colors"
+              >
+                créer un compte
               </Link>
-              <Link to="/login" className="text-xs text-base-content/50 font-medium hover:text-base-content transition-colors">
-                Se connecter
+              <Link
+                to="/login"
+                className="text-xs text-base-content/50 font-medium hover:text-base-content transition-colors"
+              >
+                se connecter
               </Link>
             </>
           )}
         </nav>
         <p className="text-xs text-base-content/40">
-          © {new Date().getFullYear()} TechSpace Solutions — Tous droits réservés
+          © {new Date().getFullYear()} TechSpace Solutions — Tous droits
+          réservés
         </p>
       </div>
     </footer>

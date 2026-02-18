@@ -94,7 +94,7 @@ function Planning() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold text-primary">
-          Planning de la semaine
+          Planning de la Semaine
         </h2>
         <div className="flex gap-4 text-sm">
           <div className="flex items-center gap-2">
