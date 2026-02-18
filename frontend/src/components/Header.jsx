@@ -1,10 +1,12 @@
 // components/Header.jsx
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
+import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { useAuth } from "../hooks/useAuth.js";
 
 function Header() {
   const { user, isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const handleLogout = () => {
     logout();
     navigate("/login");
@@ -21,46 +23,47 @@ function Header() {
         </Link>
       </div>
       <div className="flex-none">
-        {isAuthenticated && (
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <NavLink
-                to="/booking-schedule"
-                className={({ isActive }) =>
-                  isActive ? "btn btn-sm btn-primary" : "btn btn-sm btn-ghost"
-                }
-              >
-                Tableau des Réservations
-              </NavLink>
-            </li>
-          </ul>
-        )}
+        {isAuthenticated &&
+          (location.pathname === "/booking-schedule" ? (
+            <button
+              className="btn btn-sm btn-ghost flex items-center gap-1"
+              onClick={() => navigate(-1)}
+            >
+              <ArrowLeftIcon className="w-5 h-5" /> Retour
+            </button>
+          ) : (
+            <ul className="menu menu-horizontal px-1">
+              <li>
+                <NavLink
+                  to="/booking-schedule"
+                  className={({ isActive }) =>
+                    isActive ? "btn btn-sm btn-primary" : "btn btn-sm btn-ghost"
+                  }
+                >
+                  Tableau des Réservations
+                </NavLink>
+              </li>
+            </ul>
+          ))}
         <div className="ml-2">
           {isAuthenticated ? (
-            <div className="dropdown dropdown-end">
-              <label
-                tabIndex={0}
-                className="btn btn-ghost btn-circle avatar placeholder"
-              >
-                <div className="bg-primary text-primary-content rounded-full w-10 flex items-center justify-center">
-                  <span className="text-lg">{user?.firstname?.[0]}</span>
-                </div>
-              </label>
-              <ul
-                tabIndex={0}
-                className="mt-3 z-[1] p-2 menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
-              >
-                <li className="menu-title">
-                  <span>
-                    {user?.firstname} {user?.lastname}
+            <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 px-2 py-1 rounded-full bg-base-200">
+                <div className="bg-primary text-primary-content rounded-full w-8 h-8 flex items-center justify-center">
+                  <span className="text-lg font-bold">
+                    {user?.firstname?.[0]}
                   </span>
-                </li>
-                <li>
-                  <button onClick={handleLogout} className="text-error">
-                    Se déconnecter
-                  </button>
-                </li>
-              </ul>
+                </div>
+                <span className="font-medium text-base-content/80">
+                  {user?.firstname} {user?.lastname}
+                </span>
+              </div>
+              <button
+                onClick={handleLogout}
+                className="btn btn-sm btn-ghost text-error"
+              >
+                Se déconnecter
+              </button>
             </div>
           ) : (
             <div className="flex gap-2">
