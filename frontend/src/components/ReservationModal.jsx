@@ -11,6 +11,12 @@ function ReservationModal({ slot, onClose, onSuccess }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  // Heure de fin : initialisée depuis la réservation existante ou hour+1 par défaut
+  const initialEndHour = slot?.reservation
+    ? new Date(slot.reservation.end_date).getHours()
+    : (slot?.hour || 0) + 1;
+  const [endHour, setEndHour] = useState(initialEndHour);
+
   const isOwnReservation = slot?.reservation?.user_id === user?.id;
   const canModify = isOwnReservation;
 
@@ -27,7 +33,7 @@ function ReservationModal({ slot, onClose, onSuccess }) {
     try {
       // Construction des champs attendus par le backend
       const start_date = `${format(slot.day, "yyyy-MM-dd")} ${String(slot.hour).padStart(2, "0")}:00:00`;
-      const end_date = `${format(slot.day, "yyyy-MM-dd")} ${String(slot.hour + 1).padStart(2, "0")}:00:00`;
+      const end_date = `${format(slot.day, "yyyy-MM-dd")} ${String(endHour).padStart(2, "0")}:00:00`;
       const reservationData = {
         title,
         start_date,
@@ -84,9 +90,7 @@ function ReservationModal({ slot, onClose, onSuccess }) {
           <p className="font-semibold text-lg">
             {format(slot?.day, "EEEE dd MMMM yyyy", { locale: fr })}
           </p>
-          <p className="text-sm opacity-70">
-            De {slot?.hour}:00 à {slot?.hour + 1}:00
-          </p>
+          <p className="text-sm opacity-70">Début : {slot?.hour}:00</p>
         </div>
 
         {error && (
@@ -119,6 +123,27 @@ function ReservationModal({ slot, onClose, onSuccess }) {
         ) : (
           // Nouveau créneau ou propre réservation
           <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text font-medium">Heure de fin</span>
+              </label>
+              <select
+                className="select select-bordered w-full"
+                value={endHour}
+                onChange={(e) => setEndHour(Number(e.target.value))}
+                disabled={loading}
+              >
+                {Array.from(
+                  { length: 19 - (slot?.hour + 1) },
+                  (_, i) => slot.hour + 1 + i,
+                ).map((h) => (
+                  <option key={h} value={h}>
+                    {h}:00
+                  </option>
+                ))}
+              </select>
+            </div>
+
             <div className="form-control">
               <label className="label">
                 <span className="label-text font-medium">
