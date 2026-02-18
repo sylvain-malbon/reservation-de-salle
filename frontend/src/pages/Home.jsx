@@ -11,36 +11,34 @@ function Home() {
   const { isAuthenticated } = useAuth();
 
   return (
-    <div className="hero min-h-[70vh] bg-base-200">
+    <div className="hero min-h-[75vh] bg-base-200">
       <div className="hero-content text-center">
-        <div className="max-w-2xl flex flex-col items-center gap-8">
+        <div className="max-w-xl flex flex-col items-center gap-6">
 
           {/* Titre */}
-          <h1 className="text-4xl md:text-5xl font-brand text-primary drop-shadow-lg leading-tight">
-            Bienvenue dans l'Intranet
-            <br />
-            de TechSpace Solutions
+          <h1 className="text-4xl md:text-5xl font-brand text-base-content leading-tight">
+            Bienvenue dans l'Intranet<br />
+            <span className="text-primary">TechSpace Solutions</span>
           </h1>
 
           {/* Accroche */}
-          <p className="text-lg md:text-xl text-base-content/80 font-medium max-w-lg leading-relaxed">
-            Réservez la salle de réunion simplement et évitez les conflits de
-            planning entre équipes.
+          <p className="text-base text-base-content/60 max-w-md leading-relaxed">
+            Réservez la salle de réunion simplement et évitez les conflits de planning entre équipes.
           </p>
 
           {/* Infos pratiques */}
-          <div className="flex flex-wrap justify-center gap-3 text-sm font-medium">
-            <span className="flex items-center gap-1.5 bg-base-300 text-base-content/70 px-3 py-1.5 rounded-full">
-              <CalendarDaysIcon className="w-4 h-4 shrink-0" /> Lundi–Vendredi
+          <div className="flex flex-wrap justify-center gap-2 text-xs font-medium">
+            <span className="flex items-center gap-1 bg-base-100 text-base-content/60 border border-base-300 px-3 py-1 rounded-full">
+              <CalendarDaysIcon className="w-3.5 h-3.5 shrink-0" /> Lundi–Vendredi
             </span>
-            <span className="flex items-center gap-1.5 bg-base-300 text-base-content/70 px-3 py-1.5 rounded-full">
-              <ClockIcon className="w-4 h-4 shrink-0" /> 8h00–19h00
+            <span className="flex items-center gap-1 bg-base-100 text-base-content/60 border border-base-300 px-3 py-1 rounded-full">
+              <ClockIcon className="w-3.5 h-3.5 shrink-0" /> 8h00–19h00
             </span>
-            <span className="flex items-center gap-1.5 bg-base-300 text-base-content/70 px-3 py-1.5 rounded-full">
-              <ClockIconSolid className="w-4 h-4 shrink-0" /> Minimum 1h
+            <span className="flex items-center gap-1 bg-base-100 text-base-content/60 border border-base-300 px-3 py-1 rounded-full">
+              <ClockIconSolid className="w-3.5 h-3.5 shrink-0" /> Minimum 1h
             </span>
-            <span className="flex items-center gap-1.5 bg-base-300 text-base-content/70 px-3 py-1.5 rounded-full">
-              <UsersIcon className="w-4 h-4 shrink-0" /> 12 personnes max
+            <span className="flex items-center gap-1 bg-base-100 text-base-content/60 border border-base-300 px-3 py-1 rounded-full">
+              <UsersIcon className="w-3.5 h-3.5 shrink-0" /> 12 personnes max
             </span>
           </div>
 

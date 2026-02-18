@@ -4,7 +4,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth.js";
 
 function Footer() {
-  const { user, isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
   const handleLogout = () => {
     logout();
@@ -12,50 +12,41 @@ function Footer() {
   };
 
   return (
-    <footer className="w-full bg-base-100 border-t border-base-200 py-4 mt-10">
-      <div className="container mx-auto flex flex-col items-center justify-center gap-2 px-4">
-        <nav className="flex items-center gap-4 mb-1">
+    <footer className="bg-base-100 border-t border-base-200">
+      <div className="max-w-5xl mx-auto px-6 py-4 flex flex-col items-center gap-3">
+        <nav className="flex items-center gap-5">
           {isAuthenticated && (
             <NavLink
               to="/booking-schedule"
               className={({ isActive }) =>
-                (isActive
-                  ? "text-primary underline "
-                  : "text-base-content/80 hover:underline ") +
-                " text-sm lowercase font-medium transition-colors duration-150 px-1 py-0.5"
+                isActive
+                  ? "text-xs text-primary font-medium underline"
+                  : "text-xs text-base-content/50 font-medium hover:text-base-content transition-colors"
               }
             >
-              tableau des réservations
+              Tableau des réservations
             </NavLink>
           )}
           {isAuthenticated ? (
             <button
               onClick={handleLogout}
-              className="text-error text-sm lowercase font-medium bg-transparent border-none px-1 py-0.5 hover:underline transition-colors duration-150"
-              style={{ background: "none" }}
+              className="text-xs text-error font-medium hover:underline transition-colors bg-transparent border-none cursor-pointer"
             >
-              se déconnecter
+              Se déconnecter
             </button>
           ) : (
             <>
-              <Link
-                to="/register"
-                className="text-accent text-sm lowercase font-medium px-1 py-0.5 hover:underline transition-colors duration-150"
-              >
-                créer un compte
+              <Link to="/register" className="text-xs text-accent font-medium hover:underline transition-colors">
+                Créer un compte
               </Link>
-              <Link
-                to="/login"
-                className="text-base-content/80 text-sm lowercase font-medium px-1 py-0.5 hover:underline transition-colors duration-150"
-              >
-                se connecter
+              <Link to="/login" className="text-xs text-base-content/50 font-medium hover:text-base-content transition-colors">
+                Se connecter
               </Link>
             </>
           )}
         </nav>
-        <p className="text-xs text-base-content/70 font-medium text-center w-full mt-1">
-          © {new Date().getFullYear()} TechSpace Solutions - Tous droits
-          réservés
+        <p className="text-xs text-base-content/40">
+          © {new Date().getFullYear()} TechSpace Solutions — Tous droits réservés
         </p>
       </div>
     </footer>

@@ -5,25 +5,23 @@ function BookingSchedule() {
   const { user } = useAuth();
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="max-w-7xl mx-auto space-y-8">
-        {/* Carte de bienvenue */}
-        <div className="card bg-base-100 shadow-xl">
-          <div className="card-body">
-            <h1 className="text-4xl font-brand text-primary mb-4">
-              Bienvenue {user?.firstname} !
-            </h1>
-            {/* Email et nom supprimés pour alléger la carte de bienvenue */}
-          </div>
-        </div>
+    <div className="max-w-5xl mx-auto px-6 py-12 flex flex-col gap-8">
 
-        {/* Planning des réservations */}
-        <div className="card bg-base-100 shadow-xl">
-          <div className="card-body">
-            <Planning />
-          </div>
-        </div>
+      {/* Titre */}
+      <div className="flex flex-col gap-1">
+        <h1 className="text-3xl font-brand text-base-content">
+          Bonjour, {user?.firstname} !
+        </h1>
+        <p className="text-sm text-base-content/50">
+          Planning de la salle de réunion — semaine en cours
+        </p>
       </div>
+
+      {/* Planning */}
+      <div className="bg-base-100 rounded-2xl shadow-sm border border-base-200 p-6">
+        <Planning />
+      </div>
+
     </div>
   );
 }
