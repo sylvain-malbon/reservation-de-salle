@@ -13,13 +13,15 @@ function Home() {
   return (
     <div className="hero min-h-[75vh] bg-base-200">
       <div className="hero-content text-center">
-        <div className="max-w-xl flex flex-col items-center gap-6">
 
+        <div className="w-full flex flex-col items-center gap-6">
           {/* Titre */}
-          <h1 className="text-4xl md:text-5xl font-brand text-base-content leading-tight">
-            Bienvenue dans l'Intranet<br />
-            <span className="text-primary">TechSpace Solutions</span>
-          </h1>
+          <div className="w-full max-w-2xl">
+            <h1 className="text-4xl md:text-5xl font-brand text-base-content leading-tight text-center">
+              Bienvenue dans l'Intranet<br />
+              <span className="text-primary">TechSpace Solutions</span>
+            </h1>
+          </div>
 
           {/* Accroche */}
           <p className="text-base text-base-content/60 max-w-md leading-relaxed">
