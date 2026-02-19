@@ -127,21 +127,27 @@ function ReservationModal({ slot, onClose, onSuccess }) {
               <label className="label">
                 <span className="label-text font-medium">Heure de fin</span>
               </label>
-              <select
-                className="select select-bordered w-full"
-                value={endHour}
-                onChange={(e) => setEndHour(Number(e.target.value))}
-                disabled={loading}
-              >
-                {Array.from(
-                  { length: 19 - (slot?.hour + 1) },
-                  (_, i) => slot.hour + 1 + i,
-                ).map((h) => (
-                  <option key={h} value={h}>
-                    {h}:00
-                  </option>
-                ))}
-              </select>
+              {19 - slot?.hour === 1 ? (
+                <p className="input input-bordered w-full flex items-center opacity-70">
+                  {endHour}:00
+                </p>
+              ) : (
+                <select
+                  className="select select-bordered w-full"
+                  value={endHour}
+                  onChange={(e) => setEndHour(Number(e.target.value))}
+                  disabled={loading}
+                >
+                  {Array.from(
+                    { length: 19 - slot?.hour },
+                    (_, i) => slot.hour + 1 + i,
+                  ).map((h) => (
+                    <option key={h} value={h}>
+                      {h}:00
+                    </option>
+                  ))}
+                </select>
+              )}
             </div>
 
             <div className="form-control">
